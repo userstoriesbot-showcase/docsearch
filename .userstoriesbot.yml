@@ -1,0 +1,13 @@
+# Showcase fork only (never part of an upstream pull request).
+version: 1
+app:
+  install: "npm i --prefix /tmp/bun-cli bun@1.3.10 && export PATH=/tmp/bun-cli/node_modules/.bin:$PATH && bun install --ignore-scripts && bun run build:packages"
+  start: "PATH=/tmp/bun-cli/node_modules/.bin:$PATH bun --filter @docsearch/react-example dev -- --host 0.0.0.0 --port {port} --strictPort"
+  url: http://localhost:{port}
+  readyPath: /
+  runtime: node24
+  env:
+    NODE_ENV: development
+demo:
+  maxVideos: 1
+  beforePass: true
